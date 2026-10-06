@@ -43,6 +43,13 @@ export default function Home() {
           "-=0.5"
         );
 
+      gsap.set(".car", {
+        x: 0,
+        y: 0,
+        scale: 1,
+        rotation: 0,
+      });
+
       const scrollTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".scroll-section",
@@ -50,24 +57,12 @@ export default function Home() {
           end: "+=3200",
           scrub: 1,
           pin: true,
-          onUpdate: (self) => {
-            const velocity = self.getVelocity();
-
-            const tilt = gsap.utils.clamp(-5, 5, velocity / 1800);
-
-            gsap.to(".car", {
-              rotation: tilt,
-              duration: 0.25,
-              overwrite: true,
-              ease: "power2.out",
-            });
-          },
+          anticipatePin: 1,
         },
       });
 
       scrollTl.to(".car", {
-        x: "22vw",
-        scale: 1,
+        x: "18vw",
         duration: 1.5,
         ease: "none",
       });
@@ -77,16 +72,15 @@ export default function Home() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 0.5,
           ease: "power2.out",
         },
-        "-=0.8"
+        "-=0.7"
       );
 
       scrollTl.to(".car", {
-        x: "63vw",
-        scale: 1.08,
-        duration: 2,
+        x: "42vw",
+        duration: 1.5,
         ease: "none",
       });
 
@@ -95,16 +89,15 @@ export default function Home() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 0.5,
           ease: "power2.out",
         },
-        "-=1"
+        "-=0.7"
       );
 
       scrollTl.to(".car", {
-        x: "5vw",
-        scale: 1,
-        duration: 2,
+        x: "68vw",
+        duration: 1.5,
         ease: "none",
       });
 
@@ -113,16 +106,15 @@ export default function Home() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 0.5,
           ease: "power2.out",
         },
-        "-=1"
+        "-=0.7"
       );
 
       scrollTl.to(".car", {
-        x: "68vw",
-        scale: 1.1,
-        duration: 2,
+        x: "92vw",
+        duration: 1.5,
         ease: "none",
       });
 
@@ -131,21 +123,21 @@ export default function Home() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 0.5,
           ease: "power2.out",
         },
-        "-=1"
+        "-=0.7"
       );
 
       scrollTl.to(".car", {
         x: "125vw",
-        scale: 1,
         duration: 1.5,
         ease: "none",
       });
 
       gsap.to(".scroll-progress", {
         scaleX: 1,
+        transformOrigin: "left center",
         ease: "none",
         scrollTrigger: {
           trigger: ".scroll-section",
@@ -226,6 +218,7 @@ export default function Home() {
 
       <section className="scroll-section">
         <div className="background-grid" />
+
         <div className="section-label">
           <span>Scroll experience</span>
         </div>
@@ -237,14 +230,15 @@ export default function Home() {
         <div className="road-light" />
 
         <div className="car">
+          <div className="car-visual">
+            <img
+              src="/car.png"
+              alt="Sports car"
+              className="car-image"
+            />
+          </div>
+
           <div className="car-glow" />
-
-          <img
-            src="https://drive.google.com/uc?export=view&id=1YUpbc2U8feXjlme3FBkcZ9GjkYk3AVBr"
-            alt="Sports car"
-            className="car-image"
-          />
-
 
           <div className="motion-trail motion-trail-one" />
           <div className="motion-trail motion-trail-two" />
